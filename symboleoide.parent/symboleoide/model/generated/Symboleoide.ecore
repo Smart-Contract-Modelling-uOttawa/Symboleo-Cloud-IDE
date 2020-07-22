@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="symboleoide" nsURI="http://www.Symboleoide.symboleoide" nsPrefix="symboleoide">
+  <eClassifiers xsi:type="ecore:EClass" name="ContractSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainSpecs" upperBound="-1"
+        eType="#//DomainSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contracts" upperBound="-1"
+        eType="#//Contract" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dConcepts" upperBound="-1"
+        eType="#//DConcept" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ctypes" upperBound="-1"
+        eType="#//CType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DConcept">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conceptTypes" upperBound="-1"
+        eType="#//CType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//Att" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumerationItems" upperBound="-1"
+        eType="#//enumItem" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="enumItem">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainType" eSuperTypes="#//CType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dtypes" unique="false"
+        upperBound="-1" eType="#//DConcept"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Contract">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Param" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declarations" upperBound="-1"
+        eType="#//Declar" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propositions" upperBound="-1"
+        eType="#//Prop" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="obligations" upperBound="-1"
+        eType="#//Obl" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="powers" upperBound="-1"
+        eType="#//Pow" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Att"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Param"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Declar"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DeclarPair" eSuperTypes="#//Param #//Declar">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="names" upperBound="-1"
+        eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeNames" upperBound="-1"
+        eType="#//TypeName" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pair" eSuperTypes="#//Att">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//CType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeName">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Obl">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//Prop"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+        eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="antecedent" eType="#//Prop"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="consequent" eType="#//Prop"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Prop">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="junctions" upperBound="-1"
+        eType="#//Junc" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Junc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="negativeAtoms" upperBound="-1"
+        eType="#//Neg" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Neg">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="atomicExpressions" upperBound="-1"
+        eType="#//Atom" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Atom">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventPropositions" upperBound="-1"
+        eType="#//EventProp" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="situationPropositions"
+        upperBound="-1" eType="#//SitProp" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shortHandNames" upperBound="-1"
+        eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="names" upperBound="-1"
+        eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="points" upperBound="-1"
+        eType="#//Point" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intervals" upperBound="-1"
+        eType="#//Interval" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propositions" upperBound="-1"
+        eType="#//Prop" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="varName" upperBound="-1"
+        eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="setExps" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metaconstraints" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SitProp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="situationName" eType="#//Name"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intervals" upperBound="-1"
+        eType="#//Interval" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oSituationName" eType="#//oState"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cSituationName" eType="#//cState"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pSituationName" eType="#//pState"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventProp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventName" eType="#//Declar"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="points" upperBound="-1"
+        eType="#//Point" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oEventName" eType="#//oEvent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cEventName" eType="#//cEvent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pEventName" eType="#//pEvent"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interval">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="situationName" eType="#//SitName"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="points" upperBound="-1"
+        eType="#//Point" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="situationNames" upperBound="-1"
+        eType="#//SitName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempOps" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intConsts" upperBound="-1"
+        eType="#//IntConst" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="units" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SitName">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="SitName" upperBound="-1"
+        eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oStates" upperBound="-1"
+        eType="#//oState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pStates" upperBound="-1"
+        eType="#//pState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cStates" upperBound="-1"
+        eType="#//cState" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oEvents" upperBound="-1"
+        eType="#//oEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cEvents" upperBound="-1"
+        eType="#//cEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pEvents" upperBound="-1"
+        eType="#//pEvent" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntConst">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Point">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eventNames" upperBound="-1"
+        eType="#//SitName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointConsts" upperBound="-1"
+        eType="#//PointConst" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="units" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tempOps" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Name">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="pEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="powEvent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="powName" eType="#//Pow"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="cEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contrEvent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contrName" eType="#//Contract"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="oEvent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oblEvent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oblName" eType="#//Obl"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PointConst">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="oState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="oblState" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oblName" eType="#//Obl"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="cState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contrState" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contractName" eType="#//Contract"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pow">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//Prop"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+        eType="#//Name" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="antecedents" upperBound="-1"
+        eType="#//Prop" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="consequents" upperBound="-1"
+        eType="#//Prop" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="pState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="powState" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="powName" eType="#//Pow"/>
+  </eClassifiers>
+</ecore:EPackage>
