@@ -1,4 +1,4 @@
-# symboleoext
+# Symboleo Cloud IDE
 The example of how to build the Theia-based applications with the symboleoext.
 
 ## Getting started
